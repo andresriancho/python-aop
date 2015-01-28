@@ -4,13 +4,15 @@ from aop import AspectType
 
 class TestAspectType(unittest.TestCase):
     def test_pointcut_attr(self):
-        class TestClass(metaclass=AspectType):
-            pass
+        class TestClass(object):
+            __metaclass__ = AspectType
         
         self.assertTrue(hasattr(TestClass, 'pointcut'))
     
     def test_pointcut(self):
-        class TestClass(metaclass=AspectType):
+        class TestClass(object):
+            __metaclass__ = AspectType
+
             def method(self):
                 return True
         
